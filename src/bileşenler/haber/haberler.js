@@ -115,3 +115,50 @@ const data = [
   Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
   Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
+
+function haberYapici(newItem) {
+  const divArt = document.createElement("div");
+  divArt.classList.add("article");
+  const h2 = document.createElement("h2");
+  divArt.append(h2);
+  h2.textContent = newItem.baslik;
+  const p = document.createElement("p");
+  divArt.append(p);
+  p.classList.add("tarih");
+  p.textContent = newItem.tarih;
+  for (let i = 2; i < Object.keys(newItem).length; i++) {
+    divArt.append(
+      (document.createElement("p").textContent = Object.values(newItem)[i])
+    );
+  }
+  const button = document.createElement("button");
+  button.classList.add("expandButton");
+  button.textContent = "+";
+  divArt.append(button);
+  button.addEventListener("click", () => {
+    divArt.classList.toggle("article-open");
+  });
+  return divArt;
+}
+
+const newElement = {
+  baslik: "Yeni bir Xbox Series X modeli geliyor; ama önemli bir eksikle...",
+  tarih: "20 Eylül 2023 12:00",
+  ilkParagraf: `Microsoft'un yeni bir Xbox Series X modeli üzerinde çalıştığı ortaya çıktı. Ayrıca bu yeni Series X, bir de 
+    yeni kontrol kolunu beraberinde getirecek. Sızıntıya göre yeni kontrol kolu, Sony'nin DualSense'inden pek çok iyi özelliği 
+    "ödünç alacak."`,
+
+  ikinciParagraf: `FTC ile Microsoft arasındaki mücadele bitmiş olabilir ancak sızıntılar bitmiyor. Sızan yeni dava dosyası 
+    dalgasında, Microsoft’un yeni Xbox donanım planları ortaya çıktı. Bunlardan biri, yeni bir disksiz Xbox One X modeline, diğeri 
+    ise Sony PlayStation hayranlarının aşina olabileceği özellikleri "borç alan" yepyeni bir Xbox Kablosuz Kontrol Koluna işaret 
+    ediyor.`,
+
+  ucuncuParagraf: `Microsoft'un yeni nesil Xbox'ı piyasaya sürmesi için beş yıl daha geçmesi gerekecek, ancak sızan belgelere 
+    göre yeni bir Xbox Series X modeli daha erken gelebilir. Sızdırılmış mahkeme belgelerine bakılırsa şirket, kod adı Brooklin olan 
+    açıklanmamış bir Xbox Series X üzerinde çalışılıyor olabilir.`,
+};
+data.push(newElement);
+
+data.forEach((newItem) => {
+  document.body.append(haberYapici(newItem));
+});
