@@ -116,6 +116,7 @@ const data = [
   Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
 
+//Adım 1
 function haberYapici(newItem) {
   const divArt = document.createElement("div");
   divArt.classList.add("article");
@@ -135,9 +136,13 @@ function haberYapici(newItem) {
   button.classList.add("expandButton");
   button.textContent = "+";
   divArt.append(button);
+
+  //Adım 2
   button.addEventListener("click", () => {
     divArt.classList.toggle("article-open");
   });
+
+  //Adım 3
   return divArt;
 }
 
@@ -157,8 +162,11 @@ const newElement = {
     göre yeni bir Xbox Series X modeli daha erken gelebilir. Sızdırılmış mahkeme belgelerine bakılırsa şirket, kod adı Brooklin olan 
     açıklanmamış bir Xbox Series X üzerinde çalışılıyor olabilir.`,
 };
-data.push(newElement);
 
+//Adım 4
 data.forEach((newItem) => {
   document.body.append(haberYapici(newItem));
 });
+
+//Adım 5
+document.body.append(haberYapici(newElement));
